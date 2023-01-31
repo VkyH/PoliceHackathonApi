@@ -1,0 +1,11 @@
+
+
+not needed as we can make multiple instances for the same person and filter using aadhar_number:
+    handle multiple faces for a single person by making face_embeddings as a class and using foreign key
+
+
+added:
+    missing_reported_date=models.DateTimeField(auto_now_add=True)
+    resolved_date=models.DateTimeField(auto_now=True)
+
+    done the code for saving the face_embeddings in the api calls along with image url

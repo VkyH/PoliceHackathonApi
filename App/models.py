@@ -1,4 +1,5 @@
 from django.db import models
+import numpy as np
 
 class Person(models.Model):
     GENDER_CHOICES = [
@@ -47,7 +48,8 @@ class Person(models.Model):
     name = models.CharField(max_length=255)
     image = models.ImageField(upload_to='images')
     # image_url = models.URLField()
-    encodings=models.TextField(blank=True,null=True)
+    # encodings=models.TextField(blank=True,null=True)
+    encodings = models.TextField(blank=True,null=True)
     # gender = models.CharField(max_length=10)
     gender = models.CharField(max_length=10, choices=GENDER_CHOICES)
     age = models.PositiveSmallIntegerField()
@@ -62,6 +64,20 @@ class Person(models.Model):
 
     resolved=models.BooleanField(default=False)
 
+    missing_reported_date = models.DateTimeField(auto_now_add=True)
+    resolved_date = models.DateTimeField(auto_now=True)
+
+
+
+
+    # def save_encodings(self, face_encodings):
+    #     f_encodings = ", ".join(map(str, face_encodings))
+    #     print(f_encodings)
+    #     print(type(f_encodings))
+    #     self.face_encodings = f_encodings
+    #     print(type(self.face_encodings))
+    #     print(self.face_encodings)
+    #     self.save()
 
 
     def __str__(self):
